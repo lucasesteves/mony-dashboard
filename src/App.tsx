@@ -1,25 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from 'react-redux';
+import { PersistGate } from "redux-persist/integration/react";
+import { ToastContainer } from 'react-toastify';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Routes from './routes';
 
-function App() {
+import { store, persistor } from './store';
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: 'Roboto'
+  },
+  palette: {
+    background: {
+      default: "#EDF1F5"
+    },
+    primary: {
+      main: '#4E9DE6',
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: '#878787',
+      contrastText: '#fff',
+    },
+  },
+});
+
+const App:React.FC=()=> {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <Router>
+              <Routes />
+              <ToastContainer autoClose={3000} />
+            </Router>
+          </PersistGate>
+        </Provider>
+      </ThemeProvider>
   );
 }
 
