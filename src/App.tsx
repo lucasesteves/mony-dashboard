@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Routes from './routes';
+import './app.css'
 
 import { store, persistor } from './store';
 

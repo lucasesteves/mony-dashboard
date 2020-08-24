@@ -1,30 +1,31 @@
 import React from 'react'
-import { logout } from '../../services/auth';
-import { useHistory } from 'react-router-dom';
+import { Wrapper, Menu, Head } from './styles';
 import { useSelector } from 'react-redux';
 
-interface IUser{
-    userId:number,
-    name:string,
-    email:string
-}
+import Header from '../../components/Header';
+import Drawer from '../../components/Drawer';
+
+import Main from '../main';
+import Wins from '../wins';
+import Wastes from '../wastes';
 
 const Dashboard:React.FC=()=>{
-    const history=useHistory();
-    const profile:any = useSelector<any>(state => state.profile.profile.user)
-    const exit=()=>{
-        logout()
-        history.push('/login')
-    }
-    
+    const page:any = useSelector<any>(state => state.profile.profile.page)
+    console.log(page)
     return(
-        <>
-            <h2>Dashboard</h2>
-            <button onClick={exit}>sair</button>
-            <p>{profile?.userId}</p>
-            <p>{profile?.name}</p>
-            <p>{profile?.email}</p>
-        </>
+        <Wrapper>
+            <Head>
+                <Header/>
+            </Head>
+            <Menu>
+                <Drawer />
+            </Menu>
+            {page==='' ?
+            <Main/> 
+            : page==='wins' ?
+            <Wins/> :
+            <Wastes/>}
+        </Wrapper>
     )
 }
 
