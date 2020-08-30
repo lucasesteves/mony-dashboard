@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-    /* background:#0B4470; */
     background:#5159AC;
     height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
+
+    @media screen and (max-width:960px) {
+        /* background:#0B4470; */
+    }
 `;
 
 export const Card = styled.div`

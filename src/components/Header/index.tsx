@@ -11,7 +11,7 @@ import Drawer from '../Drawer';
 function Header(){
     const history = useHistory();
     const [open,setOpen] = useState<boolean>(false);
-    const profile:any = useSelector<any>(state => state.profile.profile.user)
+    // const profile:any = useSelector<any>(state => state.profile.profile.user)
     const exit=()=>{
         logout()
         history.push('/login')

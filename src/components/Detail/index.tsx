@@ -1,13 +1,13 @@
 import React from 'react'
-import { Title, Number, Row, Column, Month } from './styles';
+import { Number, Row, Column, Month, Icon } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHandHoldingUsd, faReceipt, faDollarSign } from '@fortawesome/free-solid-svg-icons'
+import Title from '../Title';
 
 interface IDetail{
     title:string,
     value:number,
 }
-
 
 function Detail({title, value}:IDetail){
 
@@ -18,12 +18,12 @@ function Detail({title, value}:IDetail){
                 <Number>R$ {value}</Number>
                 <Month>Agosto</Month>
             </Column>
-            <Column>
+            <Icon>
                 <FontAwesomeIcon 
-                    style={{color:'#ccc',opacity:'.5',height:100,width:160}} 
+                    style={{height:100,width:100}} 
                     icon={title === 'Entrada' ? faHandHoldingUsd : title === 'Saída' ? faReceipt : faDollarSign}
                 />
-            </Column>
+            </Icon>
         </Row>
     )
 }

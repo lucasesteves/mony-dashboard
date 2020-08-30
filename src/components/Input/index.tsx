@@ -4,8 +4,8 @@ import { Input } from './styles';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
     placeholder:string,
     type:string,
-    value:string,
-    data(e:string):any,
+    value?:string,
+    data(e:any):any,
     enter(e:KeyboardEvent):any,
     height:number
 }

@@ -35,7 +35,7 @@ export const Wrapper = styled.div`
 
     @media only screen and (max-width: 960px) {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, 160px) repeat(2, 300px);
+        grid-template-rows: repeat(4, 160px) repeat(1, 400px);
         grid-template-areas:
             "c1"
             "c2"

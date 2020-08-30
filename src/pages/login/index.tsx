@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signin, select } from '../../store/actions/Profile';
 import { Wrapper, Card, Title, Label } from './styles';
-import Input from '../../components/input';
-import Button from '../../components/button';
+import Input from '../../components/Input';
+import Button from '../../components/Button';
 
 const Login:React.FC=()=>{
     const history = useHistory();

@@ -5,7 +5,7 @@ export const Main=styled.div`
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 180px calc(calc(100vh - 72px) - 180px - 60px);
+    grid-template-rows: 160px calc(calc(100vh - 72px) - 160px - 60px);
     padding:20px;
     grid-template-areas: 
     "c1 c1 c2 c2"
@@ -26,10 +26,11 @@ export const Main=styled.div`
     }
 
     @media only screen and (max-width: 960px) {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(3, 120px) repeat(2, 300px);
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 160px) repeat(1, 350px);
         grid-template-areas:
-            "c1 c2"
-            "li li";
+            "c1"
+            "c2"
+            "li";
     }
 `

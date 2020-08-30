@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 
-export const Title = styled.h2`
-    font-size:24px;
-    font-weight:900;
-    font-family:Roboto, sans-serif;
-    margin-bottom:20px;
-`;
-
 export const Number = styled.h2`
     font-size:42px;
     font-weight:900;
@@ -30,4 +23,9 @@ export const Month = styled.div`
     font-weight:500;
     font-family:Roboto, sans-serif;
     color:#dedede;
+`;
+
+export const Icon = styled.div`
+    color:#f4f4f4;
+    opacity:.5;
 `;
