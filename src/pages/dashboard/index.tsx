@@ -9,9 +9,8 @@ import Main from '../main';
 import Wins from '../wins';
 import Wastes from '../wastes';
 
-const Dashboard:React.FC=()=>{
-    const page:any = useSelector<any>(state => state.profile.profile.page)
-    console.log(page)
+function Dashboard(){
+    const page:any = useSelector<any>(state => state.auth.page)
     return(
         <Wrapper>
             <Head>

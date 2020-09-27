@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const Input = styled.input`
-    height:${(props) => props.height && `${props.height}px`};
+export const Input = styled.input<{height:number}>`
+    height:${props => `${props.height}px`};
     border: 1px solid rgba(135, 135, 135, 0.3);
-    border-color: '#dedede';
+    border-color: ${props=>props.theme.colors.grey};
     outline: none;
     border-radius: 4px;
     width:calc(100% - 22px);
@@ -14,7 +14,7 @@ export const Input = styled.input`
     font-style: normal;
 
     &:focus{
-        border-color:#2CA0C1;
+        border-color:${props=>props.theme.colors.primary};
     }
     ::placeholder {
         color: #9FA0A9;

@@ -15,7 +15,7 @@ interface IModal{
 function Modal({ open, title, onClose}: IModal){
     const [ name, setName ] =  useState<string>('')
     const [ value, setValue ] =  useState<number>(0)
-
+    
     const handleKeyDown = (event:any) => {
         event.key === 'Enter' && onClose();
     };
@@ -44,7 +44,7 @@ function Modal({ open, title, onClose}: IModal){
                 <Space />
                 <Seletor font={16} bottom={16} title={'Mês'} />
                 <Space />
-                <Button color={'#5159AC'} height={42} block={true} onClick={save}>Confirmar</Button>
+                <Button color={'default'} height={42} block={true} onClick={save}>Confirmar</Button>
             </Content>
         </Wrapper>
     )

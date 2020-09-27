@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { logout } from '../../services/auth';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { Wrapper, Title, Button, Icon, MobileDrawer, MobileWrapper } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -11,7 +10,7 @@ import Drawer from '../Drawer';
 function Header(){
     const history = useHistory();
     const [open,setOpen] = useState<boolean>(false);
-    // const profile:any = useSelector<any>(state => state.profile.profile.user)
+    
     const exit=()=>{
         logout()
         history.push('/login')

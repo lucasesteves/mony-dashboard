@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const Wrapper=styled.div`
-    margin-top:54px;
+    margin-top: 10px;
 `;
 
 export const Line=styled.div<{persist:boolean}>`
     display:flex;
-    color:${props=>props.persist ? '#fff' :'#5159AC'} ;
-    background:${props=>props.persist ? '#5159AC' :'none'};
+    color:${props=>props.persist ?  props.theme.colors.white: props.theme.colors.primary} ;
+    background:${props=>props.persist && props.theme.colors.primary};
     padding:15px 20px;
     font-size:18px;
     font-weight:400;
@@ -15,12 +15,23 @@ export const Line=styled.div<{persist:boolean}>`
 
     &:hover{
         color:#fff;
-        background:#5159AC;
+        background:${props=>props.theme.colors.primary};
         cursor: pointer;
     }
 
 `;
 
-export const Item=styled.div`
+export const Item = styled.div`
     margin-left:20px;
+`;
+
+export const Name = styled.h2`
+    font-size:16px;
+    font-family:Roboto, sans-serif;
+    padding: 15px 20px;
+    color: ${props=>props.theme.colors.text};
+
+    @media screen and (max-width:960px){
+        color: ${props=>props.theme.colors.white};
+    }
 `;

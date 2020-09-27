@@ -18,7 +18,6 @@ export const Content = styled.div`
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
     border-radius:4px;
     width: 600px;
 
@@ -46,7 +45,7 @@ export const Header = styled.div`
 export const Title = styled.h2`
     font-size:18px;
     font-family:Roboto, sans-serif;
-    color:#212121;
+    color:${props=>props.theme.colors.text};
 
 `;
 
@@ -54,7 +53,7 @@ export const Label = styled.p`
     font-size:16px;
     font-family:Roboto, sans-serif; 
     font-weight:700;
-    color:#000;
+    color:${props=>props.theme.colors.text};
     display:flex;
     margin:16px 0 8px 0;
     justify-content:left;

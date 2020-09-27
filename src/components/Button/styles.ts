@@ -13,7 +13,9 @@ export const Button = styled.button<{height:number,width?:number,block:boolean}>
     padding:9px 20px;
     font-weight:900;
     box-shadow:none;
-    background-color:${(props) => props.color};
+    background-color:${props => {
+      return props.color === 'default' ? props.theme.colors.primary : props.theme.colors.secondary
+    }};
     color:#fff;
     outline:none;
     border:none;

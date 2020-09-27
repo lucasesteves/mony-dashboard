@@ -18,9 +18,9 @@ function Wastes(){
         <Main>
             <Card id="c1">
                 <Title>Despesas</Title>
-                <Button color={'#5159AC'} height={52} width={200} block={false} onClick={handlerModal}>Saída</Button>
+                <Button color={'default'} height={52} width={200} block={false} onClick={handlerModal}>Saída</Button>
             </Card>
-            <Card id="c2" color={'#EF5837'}>
+            <Card id="c2" color={'bad'}>
                 <Detail title="Saldo" value={1200.00} />
             </Card>
             <Card id="li">

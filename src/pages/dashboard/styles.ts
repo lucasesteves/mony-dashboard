@@ -19,16 +19,13 @@ export const Wrapper = styled.div`
 `;
 
 export const Head = styled.div`
-    /* background:#0B4470; */
-    background:#5159AC;
     grid-area: h;
 `;
 
 
 export const Menu = styled.div`
-    /* background:#0B4470; */
-    border-right:2px solid #5159AC;
     grid-area: d;
+    border-right:3px solid ${props=>props.theme.colors.primary};
 
     @media screen and (max-width:960px){
         display:none;    

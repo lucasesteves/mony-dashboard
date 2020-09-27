@@ -1,21 +1,14 @@
-import { createStore, combineReducers } from 'redux';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { createStore } from 'redux';
+import { persistStore } from 'redux-persist';
 
-import profile from './reducer/Profile';
+import rootReducer from './rootReducer';
+import persistReducer from './persistReducer';
 
-const rootReducer = combineReducers({
-  profile,
-});
 
-const persistConfig = {
-  key: 'root',
-  storage,
-};
+const reducer = persistReducer(rootReducer);
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-const store = createStore(persistedReducer);
+const store = createStore(reducer);
 const persistor = persistStore(store);
+
 
 export { store, persistor };

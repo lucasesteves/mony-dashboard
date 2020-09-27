@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
     display:flex;
     justify-content:space-between;
     padding:20px;
+    background:${props=>props.theme.colors.primary};
 `;
 
 export const Title = styled.h2`

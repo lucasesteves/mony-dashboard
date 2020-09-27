@@ -3,20 +3,22 @@ import { Number, Row, Column, Month, Icon } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHandHoldingUsd, faReceipt, faDollarSign } from '@fortawesome/free-solid-svg-icons'
 import Title from '../Title';
+import { useSelector } from 'react-redux';
 
 interface IDetail{
     title:string,
-    value:number,
+    value:number
 }
 
 function Detail({title, value}:IDetail){
+    const month:any = useSelector<any>(state => state.auth.month)
 
     return(
         <Row>
             <Column>
                 <Title>{title}</Title>
                 <Number>R$ {value}</Number>
-                <Month>Agosto</Month>
+                <Month>{month}</Month>
             </Column>
             <Icon>
                 <FontAwesomeIcon 

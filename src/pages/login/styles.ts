@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-    background:#5159AC;
+    background:${props=>props.theme.colors.primary};
     height:100vh;
     display:flex;
     align-items:center;
@@ -25,16 +25,16 @@ export const Card = styled.div`
     }
 `
 
-export const Title = styled.h2`
+export const Title = styled.h2<{bottom:boolean}>`
     font-size:32px;
     font-family:Roboto, sans-serif; 
-    color:#212121;
+    color:${props=>props.theme.colors.text};
     display:flex;
-    margin:32px 0 52px 0;
+    margin:${props=> !props.bottom ? `0px 0 12px 0` : `0px 0 52px 0`};
     justify-content:center;
 
     @media (max-width:600px){
-        color:#fff;
+        color:${props=>props.theme.colors.white};
     }
 
 `
@@ -49,8 +49,12 @@ export const Label = styled.p`
     justify-content:left;
 
     @media (max-width:600px){
-        color:#fff;
+        color:${props=>props.theme.colors.white};
     }
+`;
 
-`
+export const Load = styled.div`
+    display:flex;
+    justify-content:center;
+`;
 

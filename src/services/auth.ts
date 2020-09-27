@@ -18,7 +18,7 @@ export const logout = () => {
 
 export const checkToken=()=>{
     try{
-        const token = <string>getToken()
+        const token:string = <string> getToken()
         const decoded = jwtDecode<IToken>(token);
         
         const now=moment().format("DD/MM/YYYY HH:mm")
