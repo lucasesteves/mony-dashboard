@@ -1,18 +1,16 @@
 import instance from './api'
-import { loginAuth } from '../../services/auth';
 
 export class AuthenticationService {
     async login (data:object) {
         let response;
         await instance.post('/login',data).then((res) => {
             if(res.status===200){
-                loginAuth(res.data.token)
-                response = { user:res.data, signed:true }
+                response=res
             } 
         }).catch((error) => {
             if(error.response){
                 if(error.response.status === 401){
-                    response = { user:error.response.data, signed:false }
+                    response=error.response
                 }else{
                     response=error.response
                 }
@@ -26,13 +24,12 @@ export class AuthenticationService {
         let response;
         await instance.post('/register',data).then((res) => {
             if(res.status===200){
-                loginAuth(res.data.token)
-                response = { user:res.data, signed:true }
+                response=res
             } 
         }).catch((error) => {
             if(error.response){
                 if(error.response.status === 401){
-                    response = { user:error.response.data, signed:false }
+                    response=error.response
                 }else{
                     response=error.response
                 }

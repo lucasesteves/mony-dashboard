@@ -16,3 +16,9 @@ export const Container=styled.div`
         margin:0 auto;
     }
 `;
+
+export const Message = styled.div`
+    font-family:Roboto, sans-serif;
+    font-size:14px;
+    text-align:center;
+`;

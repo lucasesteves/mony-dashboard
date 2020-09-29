@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { signIn } from '../../store/auth/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerAccount, authenticate } from '../../store/auth/actions';
 import { Wrapper, Card, Title, Label, Load } from './styles';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { toast } from 'react-toastify';
-import { AuthenticationService } from '../../services/api/authentication';
 import { ClipLoader } from "react-spinners";
 
 function Login(){
@@ -16,37 +15,28 @@ function Login(){
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ variant, setVariant ] = useState(true);
-    const [ loading, setLoading ] = useState(false); 
+    const signed:any = useSelector<any>(state => state.auth.signed)
+    const loading:any = useSelector<any>(state => state.auth.loading)
+
+    useEffect(()=>{
+        signed && history.push('/')
+    },[signed])
 
     const handleKeyDown = (event:any) => {
         event.key === 'Enter' && submit();
     };
 
-    const submit= async ()=>{
+    const submit = () => {
         if(variant){
-            setLoading(true)
-            const authenticationService = new AuthenticationService();
-            const user = { email, password }
-            const response:any = await authenticationService.login(user)
-            if(response.signed){
-                dispatch(signIn(response.user.user))
-                history.push({ pathname: '/' });
-            }else{
-                setLoading(false)
-                toast.error(response.user.message)
-            }
+            if(!email || !password){
+                return toast.error('Preencha todos os campos!')
+            }    
+            dispatch(authenticate({ email, password }))
         }else{
-            setLoading(true)
-            const authenticationService = new AuthenticationService();
-            const user = {name, email, password}
-            const response:any = await authenticationService.register(user)
-            if(response.signed){
-                dispatch(signIn(response.user.user))
-                history.push({ pathname: '/' });
-            }else{
-                setLoading(false)
-                toast.error(response.user.message)
+            if(!name || !email || !password){
+                return toast.error('Preencha todos os campos!')
             }
+            dispatch(registerAccount({ name, email, password }))
         }
     }
 

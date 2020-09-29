@@ -6,7 +6,7 @@ export const Input = styled.input<{height:number}>`
     border-color: ${props=>props.theme.colors.grey};
     outline: none;
     border-radius: 4px;
-    width:calc(100% - 22px);
+    width:100%;
     padding: 9px 10px;
     font-weight: 300;
     font-size: 16px;

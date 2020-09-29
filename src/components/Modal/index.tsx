@@ -38,9 +38,9 @@ function Modal({ open, title, onClose}: IModal){
                 </Header>
                 <Line/>
                 <Label>Descrição</Label>
-                <Input type={'text'} height={24} placeholder={'Ex: Comprei roupas'} data={setName} enter={handleKeyDown} />
+                <Input type={'text'} height={42} placeholder={'Ex: Comprei roupas'} data={setName} enter={handleKeyDown} />
                 <Label>Valor</Label>
-                <Input type={'text'} height={24} placeholder={'Ex: 200'} data={setValue} enter={handleKeyDown} />
+                <Input type={'text'} height={42} placeholder={'Ex: 200'} data={setValue} enter={handleKeyDown} />
                 <Space />
                 <Seletor font={16} bottom={16} title={'Mês'} />
                 <Space />
