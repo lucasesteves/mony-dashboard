@@ -4,18 +4,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTable, faMoneyBill, faWallet } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
 import { select } from '../../store/auth/actions';
+import { Dispatch } from 'redux'
 
-const elements=[
+interface IElements{
+    name:string,
+    icon:any,
+    page:string
+}
+
+const elements:Array<IElements>=[
     {name:'Dashboard', icon:faTable, page:''},
     {name:'Meus Lucros', icon:faMoneyBill, page:'wins'},
     {name:'Meus Gastos', icon:faWallet, page:'wastes'}
 ]
 
+
 function Drawer(){
-    const dispatch=useDispatch();
-    const page:any = useSelector<any>(state => state.auth.page)
-    const user:any = useSelector<any>(state => state.auth.user)
-    const change=(page:string)=>{
+    const dispatch=useDispatch<Dispatch<ITypeSelect>>();
+    const page:string = useSelector<any,string>(state => state.auth.page)
+    const user:IUser = useSelector<any,IUser>(state => state.auth.user)
+    
+    const change=(page:string):void=>{
         dispatch(select(page)) 
     }
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Wrapper , Container, Message } from './styles';
 import { ResponsivePie } from '@nivo/pie'
 import Title from '../Title';
-import Skeleton from 'react-loading-skeleton';
 
 interface ChartData{
     data:{
@@ -21,13 +20,13 @@ function Chart({ data }:ChartData){
             {
               "id": "gasto",
               "label": "Gasto",
-              "value": data.totalLoss,
+              "value": Math.abs(data.totalLoss).toFixed(2),
               "color": "hsl(65, 70%, 50%)"
             },
             {
               "id": "Lucro",
               "label": "Lucro",
-              "value": data.totalWin,
+              "value": Math.abs(data.totalWin).toFixed(2),
               "color": "hsl(276, 70%, 50%)"
             },
         ]

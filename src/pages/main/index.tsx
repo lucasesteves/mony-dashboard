@@ -11,13 +11,9 @@ import { setData } from '../../store/dashboard/actions';
 function Main(){
 
     const dispatch = useDispatch();
-    const user:any = useSelector<any>(state => state.auth.user)
-    const month:any = useSelector<any>(state => state.auth.month)
-    const dash:any = useSelector<any>(state => state.dashboard.dash)
-
-    // useEffect(()=>{
-    //     dispatch(setData({userId:user.id, month})) 
-    // },[])
+    const user:IUser = useSelector<any,IUser>(state => state.auth.user)
+    const month:string = useSelector<any,string>(state => state.auth.month)
+    const dash:ReturnDataMainDashboard = useSelector<any,ReturnDataMainDashboard>(state => state.dashboard.dash)
 
     useEffect(()=>{
         dispatch(setData({userId:user.id, month})) 

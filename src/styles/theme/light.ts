@@ -1,4 +1,5 @@
-export default {
+export default function Theme() {
+  return{
     title: 'light',
   
     colors: {
@@ -11,5 +12,6 @@ export default {
       grey:'#DEDEDE',
       text: '#212121',
     },
-  };
+  }
+};
   

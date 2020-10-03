@@ -7,22 +7,23 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { toast } from 'react-toastify';
 import { ClipLoader } from "react-spinners";
+import { Dispatch } from 'redux';
 
 function Login(){
     const history = useHistory();
-    const dispatch = useDispatch();
-    const [ name, setName ] = useState("");
-    const [ email, setEmail ] = useState("");
-    const [ password, setPassword ] = useState("");
-    const [ variant, setVariant ] = useState(true);
-    const signed:any = useSelector<any>(state => state.auth.signed)
-    const loading:any = useSelector<any>(state => state.auth.loading)
+    const dispatch = useDispatch<Dispatch<ITypeSelect>>();
+    const [ name, setName ] = useState<string>("");
+    const [ email, setEmail ] = useState<string>("");
+    const [ password, setPassword ] = useState<string>("");
+    const [ variant, setVariant ] = useState<boolean>(true);
+    const signed:boolean = useSelector<any,boolean>(state => state.auth.signed)
+    const loading:boolean = useSelector<any,boolean>(state => state.auth.loading)
 
     useEffect(()=>{
         signed && history.push('/')
     },[signed])
 
-    const handleKeyDown = (event:any) => {
+    const handleKeyDown = (event:any):void => {
         event.key === 'Enter' && submit();
     };
 
@@ -40,7 +41,7 @@ function Login(){
         }
     }
 
-    const register=()=>{
+    const register=():void=>{
         setVariant(!variant)
     }
     

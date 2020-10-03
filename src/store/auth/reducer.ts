@@ -1,5 +1,7 @@
+import { loadConfigAction } from './actions';
 
-const INITIAL_STATE={
+
+const INITIAL_STATE : InitalState = {
     user:{
         id:'',
         name:'',
@@ -13,20 +15,20 @@ const INITIAL_STATE={
   
   export default function data(state = INITIAL_STATE, action:any) {
       switch (action.type) {
-        case "@AUTH/SIGN_IN":
+        case loadConfigAction.authenticate:
             return { ...state,user:{
                 id:action.payload._id,
                 name:action.payload.name,
                 email:action.payload.email
                 }, signed:true
             };
-        case "@AUTH/LOADING":
+        case loadConfigAction.loading:
             return { ...state,loading:action.payload }
-        case "SELECT_PAGE":
+        case loadConfigAction.select:
             return { ...state,page:action.payload.page };
-        case "SELECT_MONTH":
+        case loadConfigAction.selectMonth:
             return { ...state,month:action.payload.month };
-        case "@AUTH/LOGOUT_ACCOUNT":
+        case loadConfigAction.logout:
             return {
                 user:{
                     id:'',

@@ -5,23 +5,45 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Input from '../Input';
 import Button from '../Button';
 import Seletor from '../Seletor';
+import { useSelector, useDispatch } from 'react-redux';
+import { Dispatch } from 'redux'
+import { newGain, newLoss } from '../../store/dashboard/actions';
+import { toast } from 'react-toastify';
 
 interface IModal{
     open:boolean,
     title:string,
+    variant:string,
     onClose:()=>void
 }
 
-function Modal({ open, title, onClose}: IModal){
+function Modal({ open, title, variant, onClose}: IModal){
+    const dispatch = useDispatch<Dispatch<ITypeSelect>>();
     const [ name, setName ] =  useState<string>('')
-    const [ value, setValue ] =  useState<number>(0)
+    const [ money, setMoney ] =  useState<string>('')
+    const user:IUser = useSelector<any,IUser>(state => state.auth.user)
+    const month:string = useSelector<any,string>(state => state.auth.month)
     
-    const handleKeyDown = (event:any) => {
+    const handleKeyDown = (event:any):void => {
         event.key === 'Enter' && onClose();
     };
 
     const save = () =>{
-
+        if(!name || !money){
+            return toast.error('Preencha todos os campos!')
+        }  
+        if(variant=='gain'){
+            setName('')
+            setMoney('')
+            dispatch(newGain({userId:user.id,name,value:money,month}))
+            onClose();
+        }
+        if(variant=='loss'){
+            setName('')
+            setMoney('')
+            dispatch(newLoss({userId:user.id,name,value:money,month}))
+            onClose();
+        }
     }
 
     return(
@@ -38,9 +60,9 @@ function Modal({ open, title, onClose}: IModal){
                 </Header>
                 <Line/>
                 <Label>Descrição</Label>
-                <Input type={'text'} height={42} placeholder={'Ex: Comprei roupas'} data={setName} enter={handleKeyDown} />
+                <Input type={'text'} height={42} value={name} placeholder={'Ex: Comprei roupas'} data={setName} enter={handleKeyDown} />
                 <Label>Valor</Label>
-                <Input type={'text'} height={42} placeholder={'Ex: 200'} data={setValue} enter={handleKeyDown} />
+                <Input type={'text'} height={42} value={money} placeholder={'Ex: 200'} data={setMoney} enter={handleKeyDown} />
                 <Space />
                 <Seletor font={16} bottom={16} title={'Mês'} />
                 <Space />

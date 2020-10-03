@@ -1,23 +1,20 @@
+import { loadConfigAction } from './actions';
 import { takeLatest, put, all } from 'redux-saga/effects';
 
-import { AuthenticationService } from '../../services/api/authentication';
+import authenticationService from '../../services/api/authentication';
 import { loginAuth } from '../../services/auth';
 
 import { signIn, loading } from './actions';
 import { toast } from 'react-toastify';
 
-export function* login({ payload }:any) {
-    yield put(loading(true));
-  const { email, password } = payload;
+export function* login({ payload }:ITypeSelect) {
+  yield put(loading(true));
+  const { email, password } : LoginConfig = payload;
 
-  const authenticationService = new AuthenticationService();
-
-  const response = yield authenticationService.login({email,password});
+  const response:any = yield authenticationService.login({email,password});
  
-  console.log(response)
-
   if (response.status === 200) {
-        const { token, user } = response.data;
+        const { token, user } : ReturnDataLogin = response.data;
         loginAuth(token)
         yield put(signIn(user));
   } else {
@@ -26,18 +23,14 @@ export function* login({ payload }:any) {
   }
 }
 
-export function* register({ payload }:any) {
+export function* register({ payload }:ITypeSelect) {
 
-    const { name, email, password } = payload;
-  
-    const authenticationService = new AuthenticationService();
+    const { name, email, password } : RegisterConfig = payload;
   
     const response = yield authenticationService.register({name, email, password});
-   
-    console.log(response)
-  
+     
     if (response.status === 200) {
-        const { token, user } = response.data;
+        const { token, user } : ReturnDataLogin = response.data;
         loginAuth(token)
         yield put(signIn(user));
     } else {
@@ -47,6 +40,6 @@ export function* register({ payload }:any) {
   }
 
 export default all([
-  takeLatest('@AUTH/LOGIN', login),
-  takeLatest('@AUTH/REGISTER', register),
+  takeLatest(loadConfigAction.login, login),
+  takeLatest(loadConfigAction.register, register),
 ]);

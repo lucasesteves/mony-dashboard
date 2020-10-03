@@ -5,6 +5,7 @@ import { getMonths } from '../../services/months';
 import { currentMonth } from '../../services/months';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMonth } from '../../store/auth/actions';
+import { Dispatch } from 'redux';
 
 interface ISeletor{
     font?:number,
@@ -13,9 +14,9 @@ interface ISeletor{
 }
 
 function Seletor({font, bottom, title} : ISeletor ){
-    const dispatch = useDispatch();
-    const [ current, setCurrent ] = useState('')
-    const month:any = useSelector<any>(state => state.auth.month)
+    const dispatch = useDispatch<Dispatch<ITypeSelect>>();
+    const [ current, setCurrent ] = useState<string>('');
+    const month:string = useSelector<any,string>(state => state.auth.month)
 
     useEffect(()=>{
         if(month.length===0){
@@ -29,7 +30,7 @@ function Seletor({font, bottom, title} : ISeletor ){
         setCurrent(month)
     },[month])
 
-    const change = (value:string) => {
+    const change = (value:string):void => {
         setCurrent(value)
         dispatch(selectMonth(value))
     }

@@ -6,6 +6,8 @@ import rootSaga from './rootSaga';
 import rootReducer from './rootReducer';
 import persistReducer from './persistReducer';
 
+export type AppState = ReturnType<typeof rootReducer>
+
 const sagaMiddleware = createSagaMiddleware();
 
 const reducer = persistReducer(rootReducer);

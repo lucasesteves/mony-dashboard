@@ -12,8 +12,8 @@ interface IDetail{
 }
 
 function Detail({title, value}:IDetail){
-    const month:any = useSelector<any>(state => state.auth.month)
-    const loading:any = useSelector<any>(state => state.dashboard.loading)
+    const month:string = useSelector<any,string>(state => state.auth.month)
+    const loading:boolean = useSelector<any,boolean>(state => state.dashboard.loading)
 
     return(
         <Row>
@@ -23,7 +23,7 @@ function Detail({title, value}:IDetail){
             <>   
                 <Column>
                     <Title>{title}</Title>
-                    <Number>R$ {value}</Number>
+                    <Number>R$ {value.toFixed(2)}</Number>
                     <Month>{month}</Month>
                 </Column>
                 <Icon>
