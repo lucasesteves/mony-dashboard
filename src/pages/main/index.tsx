@@ -1,43 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Wrapper } from './styles';
 import Card from '../../components/Card';
 import Detail from '../../components/Detail';
 import Seletor from '../../components/Seletor';
 import Chart from '../../components/Charts';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setData } from '../../store/dashboard/actions';
 
-
-// interface IMain {
-//     gain:number,
-//     loss:number,
-//     value:number,
-// }
 
 function Main(){
 
-    // const [ getIn, setGetIn ] = useState(0);
-    // const [ getOut, setGetOut ] = useState(0);
-    // const [ average, setAverage ] = useState(0);
-    // const [ select , setSelect ] = useState(0);
-    // const month:any = useSelector<any>(state => state.auth.month)
+    const dispatch = useDispatch();
+    const user:IUser = useSelector<any,IUser>(state => state.auth.user)
+    const month:string = useSelector<any,string>(state => state.auth.month)
+    const dash:ReturnDataMainDashboard = useSelector<any,ReturnDataMainDashboard>(state => state.dashboard.dash)
 
+    useEffect(()=>{
+        dispatch(setData({userId:user.id, month})) 
+    },[month])
     
     return(
         <Wrapper>
             <Card id="c1" color={'default'}>
-                <Detail title="Entrada" value={2000.00} />
+                <Detail title="Entrada" value={dash.totalWin} />
             </Card>
             <Card id="c2" color={'default'}>
-                <Detail title="Saída" value={800.00} />
+                <Detail title="Saída" value={dash.totalLoss} />
             </Card>
-            <Card id="c3" color={'good'}>
-                <Detail title="Saldo" value={1200.00} />
+            <Card id="c3" color={dash.diff>0 ? 'good' : 'bad'}>
+                <Detail title="Saldo" value={dash.diff} />
             </Card>
             <Card id="se">
                 <Seletor />
             </Card>
             <Card id="ch">
-                <Chart />
+                <Chart data={dash} />
             </Card>
         </Wrapper>
     )

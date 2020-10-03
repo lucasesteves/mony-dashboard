@@ -4,7 +4,7 @@ import { Title } from './styles';
 interface ITitle{
     font?:number,
     bottom?:number,
-    children:any
+    children:string
 }
 
 function TitleComponent({ font, bottom, children}:ITitle){

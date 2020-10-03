@@ -6,7 +6,7 @@ interface IToken {
     exp: number;
 }
 
-const TOKEN_KEY = 'jwt';
+const TOKEN_KEY = 'persist:/token';
 
 export const loginAuth = (token:string) => {
     localStorage.setItem(TOKEN_KEY, token);

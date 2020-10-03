@@ -1,30 +1,46 @@
-import React from 'react'
-import { Wrapper , Container} from './styles';
+import React, { useState, useEffect } from 'react'
+import { Wrapper , Container, Message } from './styles';
 import { ResponsivePie } from '@nivo/pie'
 import Title from '../Title';
 
-const data=[
-    {
-      "id": "gasto",
-      "label": "Gasto",
-      "value": 355,
-      "color": "hsl(65, 70%, 50%)"
-    },
-    {
-      "id": "Lucro",
-      "label": "Lucro",
-      "value": 343,
-      "color": "hsl(276, 70%, 50%)"
-    },
-  ]
+interface ChartData{
+    data:{
+        totalWin:number,
+        totalLoss:number
+    }
+}
 
-function Chart(){
+
+function Chart({ data }:ChartData){
+
+    const [ formatData, setFormatData ] = useState<any>([])
+
+    useEffect(()=>{
+        const format = [
+            {
+              "id": "gasto",
+              "label": "Gasto",
+              "value": Math.abs(data.totalLoss).toFixed(2),
+              "color": "hsl(65, 70%, 50%)"
+            },
+            {
+              "id": "Lucro",
+              "label": "Lucro",
+              "value": Math.abs(data.totalWin).toFixed(2),
+              "color": "hsl(276, 70%, 50%)"
+            },
+        ]
+        setFormatData(format)
+    },[data])
+
+
     return(
         <Wrapper>
             <Title>Análise Gráfica</Title>
             <Container>
+                {!data.totalWin ?  <Message>Não há valores para serem representados graficamente</Message> :
                 <ResponsivePie
-                    data={data}
+                    data={formatData}
                     margin={{ top: 0, right: 0, bottom: 70, left: 0 }}
                     innerRadius={0.5}
                     padAngle={0.7}
@@ -66,7 +82,7 @@ function Chart(){
                             ]
                         }
                     ]}
-                />
+                />}
             </Container>
         </Wrapper>
     )

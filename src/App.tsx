@@ -9,14 +9,14 @@ import Routes from './routes';
 
 import { store, persistor } from './store';
 
-import light from './styles/theme/light';
 import GlobalStyle from './styles/global';
+import Theme from './styles/theme/light';
 
 const App:React.FC=()=> {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ThemeProvider theme={light}>
+        <ThemeProvider theme={Theme()}>
           <Router>
             <Routes />
             <ToastContainer autoClose={3000} />

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHandHoldingUsd, faReceipt, faDollarSign } from '@fortawesome/free-solid-svg-icons'
 import Title from '../Title';
 import { useSelector } from 'react-redux';
+import Skeleton from 'react-loading-skeleton';
 
 interface IDetail{
     title:string,
@@ -11,21 +12,28 @@ interface IDetail{
 }
 
 function Detail({title, value}:IDetail){
-    const month:any = useSelector<any>(state => state.auth.month)
+    const month:string = useSelector<any,string>(state => state.auth.month)
+    const loading:boolean = useSelector<any,boolean>(state => state.dashboard.loading)
 
     return(
         <Row>
-            <Column>
-                <Title>{title}</Title>
-                <Number>R$ {value}</Number>
-                <Month>{month}</Month>
-            </Column>
-            <Icon>
-                <FontAwesomeIcon 
-                    style={{height:100,width:100}} 
-                    icon={title === 'Entrada' ? faHandHoldingUsd : title === 'Saída' ? faReceipt : faDollarSign}
-                />
-            </Icon>
+            { loading ? 
+                <Skeleton/>
+            : 
+            <>   
+                <Column>
+                    <Title>{title}</Title>
+                    <Number>R$ {value.toFixed(2)}</Number>
+                    <Month>{month}</Month>
+                </Column>
+                <Icon>
+                    <FontAwesomeIcon 
+                        style={{height:100,width:100}} 
+                        icon={title === 'Entrada' ? faHandHoldingUsd : title === 'Saída' ? faReceipt : faDollarSign}
+                    />
+                </Icon>
+            </>
+            }
         </Row>
     )
 }

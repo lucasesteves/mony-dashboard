@@ -4,23 +4,28 @@ import { useHistory } from 'react-router-dom';
 import { Wrapper, Title, Button, Icon, MobileDrawer, MobileWrapper } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { logoutAccount } from '../../store/auth/actions';
+import { Dispatch } from 'redux';
 
 import Drawer from '../Drawer';
+import { useDispatch } from 'react-redux';
 
 function Header(){
     const history = useHistory();
+    const dispatch = useDispatch<Dispatch<ITypeSelect>>();
     const [open,setOpen] = useState<boolean>(false);
     
-    const exit=()=>{
+    const exit = async ()=>{
+        await dispatch(logoutAccount())
         logout()
         history.push('/login')
     }
 
-    const handlerOpen=()=>{
+    const handlerOpen=():void=>{
         setOpen(true)
     }
 
-    const handlerClose=()=>{
+    const handlerClose=():void=>{
         setOpen(false)
     }
 

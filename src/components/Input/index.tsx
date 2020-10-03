@@ -5,8 +5,8 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
     placeholder:string,
     type:string,
     value?:string,
-    data(e:any):any,
-    enter(e:KeyboardEvent):any,
+    data(e:any):void,
+    enter(e:KeyboardEvent):void,
     height:number
 }
 
@@ -18,7 +18,7 @@ const InputComponent:React.FC<InputProps>=({value, height, type, placeholder, da
             height={height}
             type={type}
             placeholder={placeholder}
-            onChange={(e) => data(e.target.value)}
+            onChange={(e:any) => data(e.target.value)}
             onKeyDown={(e)=>enter(e)}
       />
     )

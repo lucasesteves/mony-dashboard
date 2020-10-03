@@ -17,6 +17,7 @@ export const Line=styled.div`
 export const Item=styled.div`
     font-family:Roboto, sans-serif;
     font-size:14px;
+    flex:1;
 `;
 
 export const Icon = styled.div`

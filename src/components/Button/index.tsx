@@ -7,7 +7,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     block:boolean,
     color:string,
     children:any,
-    onClick():any
+    onClick():void
 }
 
 const ButtonComponent:React.FC<ButtonProps>=({height, width, color, block, children, onClick})=>{

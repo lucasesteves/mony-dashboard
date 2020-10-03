@@ -4,20 +4,21 @@ import Title from '../Title';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
-function Table(){
+interface ITable{
+    list:Array<ListElement>
+    remove:any
+}
 
-    const remove=(id:number)=>{
-
-    }
+function Table({ list, remove }:ITable){
 
     return(
         <Wrapper>
             <Title>Histórico</Title>
-            {[1,2,3,4,5,6,7,8,9].map((e,index)=>(
+            {list.map((e,index)=>(
                 <Line key={index}>
-                    <Item>Roupa</Item>
-                    <Item>200.00</Item>
-                    <Icon onClick={()=>remove(index)}>
+                    <Item>{e.name}</Item>
+                    <Item>R$ {e.value}</Item>
+                    <Icon onClick={()=>remove(e._id)}>
                     <FontAwesomeIcon 
                         style={{height:16,width:16}} 
                         icon={faTrash}
