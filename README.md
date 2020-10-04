@@ -3,8 +3,6 @@
 
 Portfólio com o objetivo de desenvolver uma plataforma de organização e controle de finanças pessoais.
 
-[Acessar a api do projeto](https://github.com/lucasesteves/mony-api) 
-
 ## Tecnologias utilizadas
 
 - ReactJS   
@@ -21,5 +19,10 @@ Para iniciar o projeto, siga os seguintes passos:
 - O projeto estará rodando no endereço [http://localhost:3000](http://localhost:3000)
 
 ## Próximos passos
+
+O Dashboard consome uma api desenvolvida em NodeJS que sem encontra no link abaixo.
+[Acessar a api do projeto](https://github.com/lucasesteves/mony-api) 
+
+O processo de inicialização da api é o mesmo descrito a cima.
 
 Após a execução do projeto, crie uma conta para acessar a plataforma. E uma vez logado, adicione os seus gastos e lucros a fim de ter um controle mais detalhado de suas finanças.
