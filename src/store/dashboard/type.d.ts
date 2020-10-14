@@ -5,7 +5,7 @@ interface ListElement{
     value:string
 }
 
-interface InitalStateDashboard {
+interface DashboardState {
     dash:{
         totalWin:number,
         totalLoss:number,

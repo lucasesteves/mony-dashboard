@@ -16,10 +16,10 @@ interface ISeletor{
 function Seletor({font, bottom, title} : ISeletor ){
     const dispatch = useDispatch<Dispatch<ITypeSelect>>();
     const [ current, setCurrent ] = useState<string>('');
-    const month:string = useSelector<any,string>(state => state.auth.month)
+    const month = useSelector((state:ApplicationService) => state.auth.month)
 
     useEffect(()=>{
-        if(month.length===0){
+        if(!month){
             const nameMonth = currentMonth()
             setCurrent(nameMonth)
             dispatch(selectMonth(nameMonth))

@@ -13,10 +13,10 @@ class DashboardService{
 
     private year:string = moment().format('YYYY')
 
-    async dashboard({ userId, month }:MainData){
+    async dashboard({ userId, month }:MainData):Promise<object>{
         try{
             const data = { userId, month, year:this.year }
-            const result = await instance.post<Promise<object>>('/dashboard',data,{
+            const result = await instance.post('/dashboard',data,{
                 headers:{
                     "Authorization":getToken()
                 }

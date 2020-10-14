@@ -10,7 +10,7 @@ import Wins from '../wins';
 import Wastes from '../wastes';
 
 function Dashboard(){
-    const page:string = useSelector<any,string>(state => state.auth.page)
+    const page:string = useSelector((state:ApplicationService) => state.auth.page)
     return(
         <Wrapper>
             <Head>

@@ -1,6 +1,6 @@
 import { loadDashboardAction } from './actions';
 
-const INITIAL_STATE : InitalStateDashboard={
+const INITIAL_STATE : DashboardState={
     dash:{
         totalWin:0,
         totalLoss:0,

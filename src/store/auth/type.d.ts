@@ -14,7 +14,7 @@ interface ReturnDataLogin{
     user:object
 }
 
-interface InitalState {
+interface UserState {
     user:{
         id:string,
         name:string,

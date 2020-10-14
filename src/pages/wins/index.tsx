@@ -13,10 +13,10 @@ import { allGain, totalGain, deleteGain } from '../../store/dashboard/actions';
 function Wins(){
     const dispatch = useDispatch<Dispatch<ITypeSelect>>()
     const [ open, setOpen ] = useState<boolean>(false);
-    const user:IUser = useSelector<any,IUser>(state => state.auth.user)
-    const month:string = useSelector<any,string>(state => state.auth.month)
-    const gain:Array<ListElement> = useSelector<any,Array<ListElement>>(state => state.dashboard.gain)
-    const total:number = useSelector<any,number>(state => state.dashboard.sumOfGain)
+    const user:IUser = useSelector((state:ApplicationService) => state.auth.user)
+    const month:string = useSelector((state:ApplicationService) => state.auth.month)
+    const gain:Array<ListElement> = useSelector((state:ApplicationService) => state.dashboard.gain)
+    const total:number = useSelector((state:ApplicationService) => state.dashboard.sumOfGain)
 
     useEffect(()=>{
         dispatch(allGain({userId:user.id,month}))

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerAccount, authenticate } from '../../store/auth/actions';
 import { Wrapper, Card, Title, Label, Load } from './styles';
@@ -16,13 +16,17 @@ function Login(){
     const [ email, setEmail ] = useState<string>("");
     const [ password, setPassword ] = useState<string>("");
     const [ variant, setVariant ] = useState<boolean>(true);
-    const signed:boolean = useSelector<any,boolean>(state => state.auth.signed)
-    const loading:boolean = useSelector<any,boolean>(state => state.auth.loading)
+    // const signed:boolean = useSelector((state:ApplicationService) => state.auth.signed)
+    const { loading, signed, user } = useSelector((state:ApplicationService) =>{
+        return{
+            user:state.auth.user,
+            signed: state.auth.signed,
+            loading: state.auth.loading  
+        }
+    })
 
-    useEffect(()=>{
-        signed && history.push('/')
-    },[signed])
-
+    if(signed && user.id) return <Redirect to='/'/>
+    
     const handleKeyDown = (event:any):void => {
         event.key === 'Enter' && submit();
     };

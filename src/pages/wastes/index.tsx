@@ -13,10 +13,10 @@ import { allLoss, totalLoss, deleteLoss } from '../../store/dashboard/actions';
 function Wastes(){
     const dispatch = useDispatch<Dispatch<ITypeSelect>>()
     const [ open, setOpen ] = useState<boolean>(false);
-    const user:IUser = useSelector<any,IUser>(state => state.auth.user)
-    const month:string = useSelector<any,string>(state => state.auth.month)
-    const loss:Array<ListElement> = useSelector<any,Array<ListElement>>(state => state.dashboard.loss)
-    const total:number = useSelector<any,number>(state => state.dashboard.sumOfLoss)
+    const user:IUser = useSelector((state:ApplicationService) => state.auth.user)
+    const month:string = useSelector((state:ApplicationService) => state.auth.month)
+    const loss:Array<ListElement> = useSelector((state:ApplicationService) => state.dashboard.loss)
+    const total:number = useSelector((state:ApplicationService) => state.dashboard.sumOfLoss)
     
     useEffect(()=>{
         dispatch(allLoss({userId:user.id,month}))

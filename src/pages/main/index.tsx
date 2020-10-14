@@ -8,12 +8,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setData } from '../../store/dashboard/actions';
 
 
+
 function Main(){
 
     const dispatch = useDispatch();
-    const user:IUser = useSelector<any,IUser>(state => state.auth.user)
-    const month:string = useSelector<any,string>(state => state.auth.month)
-    const dash:ReturnDataMainDashboard = useSelector<any,ReturnDataMainDashboard>(state => state.dashboard.dash)
+    const user:IUser = useSelector((state:ApplicationService) => state.auth.user)
+    const month:string = useSelector((state:ApplicationService) => state.auth.month)
+    const dash:ReturnDataMainDashboard = useSelector((state:ApplicationService) => state.dashboard.dash)
 
     useEffect(()=>{
         dispatch(setData({userId:user.id, month})) 

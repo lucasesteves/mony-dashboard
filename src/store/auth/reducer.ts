@@ -1,7 +1,7 @@
 import { loadConfigAction } from './actions';
 
 
-const INITIAL_STATE : InitalState = {
+const INITIAL_STATE : UserState = {
     user:{
         id:'',
         name:'',
