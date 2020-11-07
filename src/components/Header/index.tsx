@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { logout } from '../../services/auth';
-import { useHistory, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Wrapper, Title, Button, Icon, MobileDrawer, MobileWrapper } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { logoutAccount } from '../../store/auth/actions';
 import { Dispatch } from 'redux';
-import { persistor } from '../../store';
 
 import Drawer from '../Drawer';
 import { useDispatch } from 'react-redux';
@@ -17,12 +15,8 @@ function Header(){
     const [open,setOpen] = useState<boolean>(false);
     
     const exit = ()=>{
-        // logout()
-        localStorage.clear();
-        // persistor.purge();
-        // history.push('/login')
-        return <Redirect to="/login" />
-        // dispatch(logoutAccount())
+        dispatch(logoutAccount())
+        history.push('/login')
     }
 
     const handlerOpen=():void=>{

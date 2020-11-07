@@ -1,6 +1,5 @@
 import {instance} from './api';
 import moment from 'moment';
-import { getToken } from '../auth';
 
 interface MainData{
     userId:string,

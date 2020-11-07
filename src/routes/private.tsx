@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { isLogin } from '../services/auth';
 import { useSelector } from 'react-redux';
 
 

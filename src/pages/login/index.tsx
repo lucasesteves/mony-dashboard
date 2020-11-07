@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Redirect, useHistory } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerAccount, authenticate } from '../../store/auth/actions';
 import { Wrapper, Card, Title, Label, Load } from './styles';
@@ -10,13 +10,11 @@ import { ClipLoader } from "react-spinners";
 import { Dispatch } from 'redux';
 
 function Login(){
-    const history = useHistory();
     const dispatch = useDispatch<Dispatch<ITypeSelect>>();
     const [ name, setName ] = useState<string>("");
     const [ email, setEmail ] = useState<string>("");
     const [ password, setPassword ] = useState<string>("");
     const [ variant, setVariant ] = useState<boolean>(true);
-    // const signed:boolean = useSelector((state:ApplicationService) => state.auth.signed)
     const { loading, signed, user } = useSelector((state:ApplicationService) =>{
         return{
             user:state.auth.user,
@@ -32,13 +30,10 @@ function Login(){
     };
 
     const submit = () => {
-        console.log('chega aqui?')
         if(variant){
-            console.log('e aqui?')
             if(!email || !password){
                 return toast.error('Preencha todos os campos!')
             }    
-            console.log(email,password)
             dispatch(authenticate({ email, password }))
         }else{
             if(!name || !email || !password){
