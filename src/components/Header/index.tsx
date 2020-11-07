@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { logout } from '../../services/auth';
 import { useHistory } from 'react-router-dom';
 import { Wrapper, Title, Button, Icon, MobileDrawer, MobileWrapper } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,9 +14,8 @@ function Header(){
     const dispatch = useDispatch<Dispatch<ITypeSelect>>();
     const [open,setOpen] = useState<boolean>(false);
     
-    const exit = async ()=>{
-        await dispatch(logoutAccount())
-        logout()
+    const exit = ()=>{
+        dispatch(logoutAccount())
         history.push('/login')
     }
 

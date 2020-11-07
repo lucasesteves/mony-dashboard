@@ -1,7 +1,10 @@
 import axios from 'axios';
+import { AxiosInstance } from 'axios';
 
-const instance= axios.create({
+export const instance:AxiosInstance= axios.create({
     baseURL:'http://localhost:4000'
 })
 
-export default instance;
+export const setToken = (token:string) => {
+    return instance.defaults.headers.Authorization = token 
+}

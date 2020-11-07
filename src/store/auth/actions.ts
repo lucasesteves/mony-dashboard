@@ -5,7 +5,7 @@ export enum loadConfigAction {
     loading = "@AUTH/LOADING",
     select = "@AUTH/SELECT_PAGE",
     selectMonth = "@AUTH/SELECT_MONTH",
-    logout = "@AUTH/LOGOUT_ACCOUNT"
+    logout = "@AUTH/LOGOUT_ACCOUNT",
   }
 
 export const authenticate=({ email, password }:IProfile):ITypeSelect=>({
@@ -18,9 +18,9 @@ export const registerAccount=({ name, email, password }:IProfile):ITypeSelect=>(
     payload:{name, email,password }
 });
 
-export const signIn=( user:object )=>({
+export const signIn=( {user, token }:ICredential )=>({
     type:loadConfigAction.authenticate,
-    payload:user
+    payload:{user,token}
 });
 
 export const loading=(value:boolean)=>({
@@ -42,4 +42,5 @@ export const logoutAccount=():ITypeSelect=>({
     type:loadConfigAction.logout,
     payload: {}
 });
+
     

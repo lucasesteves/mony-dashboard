@@ -21,8 +21,8 @@ const elements:Array<IElements>=[
 
 function Drawer(){
     const dispatch=useDispatch<Dispatch<ITypeSelect>>();
-    const page:string = useSelector<any,string>(state => state.auth.page)
-    const user:IUser = useSelector<any,IUser>(state => state.auth.user)
+    const page = useSelector((state:ApplicationService) => state.auth.page)
+    const user = useSelector((state:ApplicationService) => state.auth.user)
     
     const change=(page:string):void=>{
         dispatch(select(page)) 

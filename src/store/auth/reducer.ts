@@ -7,6 +7,7 @@ const INITIAL_STATE : UserState = {
         name:'',
         email:''
     },
+    token:'',
     page:'',
     month:'',
     signed:false,
@@ -16,11 +17,10 @@ const INITIAL_STATE : UserState = {
   export default function data(state = INITIAL_STATE, action:any) {
       switch (action.type) {
         case loadConfigAction.authenticate:
-            return { ...state,user:{
-                id:action.payload._id,
-                name:action.payload.name,
-                email:action.payload.email
-                }, signed:true
+            return { ...state,
+                user:action.payload.user,
+                token:action.payload.token, 
+                signed:true
             };
         case loadConfigAction.loading:
             return { ...state,loading:action.payload }
@@ -35,6 +35,7 @@ const INITIAL_STATE : UserState = {
                     name:'',
                     email:''
                 },
+                token:'',
                 page:'',
                 month:'',
                 signed:false
