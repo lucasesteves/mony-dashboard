@@ -25,17 +25,20 @@ function Login(){
         }
     })
 
-    if(signed && user.id) return <Redirect to='/'/>
+    if(signed && user?.id) return <Redirect to='/'/>
     
     const handleKeyDown = (event:any):void => {
         event.key === 'Enter' && submit();
     };
 
     const submit = () => {
+        console.log('chega aqui?')
         if(variant){
+            console.log('e aqui?')
             if(!email || !password){
                 return toast.error('Preencha todos os campos!')
             }    
+            console.log(email,password)
             dispatch(authenticate({ email, password }))
         }else{
             if(!name || !email || !password){

@@ -18,9 +18,9 @@ export const registerAccount=({ name, email, password }:IProfile):ITypeSelect=>(
     payload:{name, email,password }
 });
 
-export const signIn=( user:object )=>({
+export const signIn=( {user, token }:ICredential )=>({
     type:loadConfigAction.authenticate,
-    payload:user
+    payload:{user,token}
 });
 
 export const loading=(value:boolean)=>({

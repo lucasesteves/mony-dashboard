@@ -42,7 +42,7 @@ export const isLogin = () => {
     if (getToken()) {
         return true;
     }
-    // if (getToken() && checkToken()) {
+    // if (checkToken()) {
     //     return true;
     // }
     return false;

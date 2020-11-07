@@ -9,17 +9,15 @@ interface RegisterConfig{
     password:string
 }
 
-interface ReturnDataLogin{
-    token:string,
-    user:object
+interface UserCredential{
+    id:string,
+    name:string,
+    email:string
 }
 
 interface UserState {
-    user:{
-        id:string,
-        name:string,
-        email:string
-    },
+    user:UserCredential,
+    token:string,
     page:string,
     month:string,
     signed:boolean,
@@ -35,4 +33,9 @@ interface IProfile{
     name?:string,
     email:string,
     password:string
+}
+
+interface ICredential {
+    user:UserCredential,
+    token:string
 }
