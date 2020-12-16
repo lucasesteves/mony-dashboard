@@ -54,19 +54,19 @@ function Login(){
                 
                 {!variant && <>
                     <Label>Nome:</Label>
-                    <Input type={'text'} height={42} placeholder={'Ex: Jose'} value={name} data={setName} enter={handleKeyDown}   />
+                    <Input cyName={"name"} type={'text'} height={42} placeholder={'Ex: Jose'} value={name} data={setName} enter={handleKeyDown}   />
                 </>}        
                 
                 <Label>Email:</Label>
-                <Input type={'text'} height={42} placeholder={'Ex: email@mail.com'} value={email} data={setEmail} enter={handleKeyDown}   />
+                <Input cyName={"email"} type={'text'} height={42} placeholder={'Ex: email@mail.com'} value={email} data={setEmail} enter={handleKeyDown}   />
                 
                 <Label>Senha:</Label>
-                <Input type={'password'} height={42} placeholder={'Senha'} value={password} data={setPassword} enter={handleKeyDown}   />
+                <Input cyName={"password"} type={'password'} height={42} placeholder={'Senha'} value={password} data={setPassword} enter={handleKeyDown}   />
                 
                 {variant ? <div style={{marginTop:40}}/>: <div style={{marginTop:20}}/> }
                 {!loading ?
                     <>
-                        <Button color={'default'} height={42} block={true} onClick={submit}>{variant ? 'Entrar' : 'Cadastrar'}</Button> 
+                        <Button cyName={'login'} color={'default'} height={42} block={true} onClick={submit}>{variant ? 'Entrar' : 'Cadastrar'}</Button> 
 
                         <div style={{marginTop:20}}/>
                         <Button color={'secondary'} height={42} block={true} onClick={register}>{variant ? 'Cadastrar' : 'Voltar'}</Button>

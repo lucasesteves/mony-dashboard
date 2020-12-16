@@ -39,6 +39,7 @@ export function* getAllGain({ payload }:ITypeSelect) {
 export function* newGain({ payload }:ITypeSelect) {
   const { userId, name, value, month } : CreateMainDashboard = payload;
 
+  console.log({ userId, name, value, month })
   const response = yield dashboardService.newGain({userId, name, value, month});
 
   if (response.status === 200) {

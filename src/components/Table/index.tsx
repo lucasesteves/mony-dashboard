@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { Wrapper, Line, Item, Icon } from './styles';
 import Title from '../Title';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

@@ -21,15 +21,15 @@ function Wastes(){
     useEffect(()=>{
         dispatch(allLoss({userId:user.id,month}))
         dispatch(totalLoss({userId:user.id,month}))
-    },[])
+    },[dispatch, user.id, month])
     
     useEffect(()=>{
         loss && dispatch(totalLoss({userId:user.id,month}))
-    },[loss])
+    },[loss, dispatch, user.id, month])
 
 
-    const removeLoss = async (_id:string) =>{
-        await dispatch(deleteLoss(_id))
+    const removeLoss = (_id:string) =>{
+        dispatch(deleteLoss(_id))
     }
 
     const handlerModal=()=>{

@@ -21,15 +21,15 @@ function Wins(){
     useEffect(()=>{
         dispatch(allGain({userId:user.id,month}))
         dispatch(totalGain({userId:user.id,month}))
-    },[])
+    },[dispatch, month, user.id])
     
     useEffect(()=>{
         gain && dispatch(totalGain({userId:user.id,month}))
-    },[gain])
+    },[gain, dispatch, user.id, month])
 
 
-    const removeGain = async (_id:string) =>{
-        await dispatch(deleteGain(_id))
+    const removeGain = (_id:string) =>{
+        dispatch(deleteGain(_id))
     }
 
 

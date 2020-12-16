@@ -7,13 +7,15 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
     value?:string,
     data(e:any):void,
     enter(e:KeyboardEvent):void,
-    height:number
+    height:number,
+    cyName?:string
 }
 
 
-const InputComponent:React.FC<InputProps>=({value, height, type, placeholder, data, enter })=>{
+const InputComponent:React.FC<InputProps>=({value, height, type, placeholder, data, enter, cyName })=>{
     return(
         <Input
+            data-cy={cyName}
             value={value}
             height={height}
             type={type}

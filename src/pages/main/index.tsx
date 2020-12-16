@@ -18,7 +18,7 @@ function Main(){
 
     useEffect(()=>{
         dispatch(setData({userId:user.id, month})) 
-    },[month])
+    },[month, dispatch, user.id])
     
     return(
         <Wrapper>

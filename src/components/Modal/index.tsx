@@ -32,13 +32,15 @@ function Modal({ open, title, variant, onClose}: IModal){
         if(!name || !money){
             return toast.error('Preencha todos os campos!')
         }  
-        if(variant=='gain'){
+        if(variant === 'gain'){
+            console.log('chega aqui?')
+            console.log({userId:user.id,name,value:money,month})
             setName('')
             setMoney('')
             dispatch(newGain({userId:user.id,name,value:money,month}))
             onClose();
         }
-        if(variant=='loss'){
+        if(variant === 'loss'){
             setName('')
             setMoney('')
             dispatch(newLoss({userId:user.id,name,value:money,month}))

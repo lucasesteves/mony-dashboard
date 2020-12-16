@@ -24,7 +24,7 @@ function Seletor({font, bottom, title} : ISeletor ){
             setCurrent(nameMonth)
             dispatch(selectMonth(nameMonth))
         }
-    },[])
+    },[dispatch, month])
 
     useEffect(()=>{
         setCurrent(month)
