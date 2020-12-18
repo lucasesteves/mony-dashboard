@@ -39,13 +39,11 @@ export function* getAllGain({ payload }:ITypeSelect) {
 export function* newGain({ payload }:ITypeSelect) {
   const { userId, name, value, month } : CreateMainDashboard = payload;
 
-  console.log({ userId, name, value, month })
   const response = yield dashboardService.newGain({userId, name, value, month});
 
   if (response.status === 200) {
         const { _id, name, value } = response.data.gain
         yield put(saveNewGain({ _id, name, value }))
-      //   toast.success(response.data.message)
   } else { 
         toast.error(response.data.message)
   }
@@ -71,7 +69,6 @@ export function* removeGain({ payload }:ITypeSelect) {
 
   if (response.status === 200) {
         yield put(confirmDeleteGain(_id));
-      //   toast.success(response.data.message)
   } else {
         toast.error(response.data.message)
   }
@@ -99,7 +96,6 @@ export function* newLoss({ payload }:ITypeSelect) {
       if (response.status === 200) {
             const { _id, name, value } = response.data.loss
             yield put(saveNewLoss({ _id, name, value }))
-            //   toast.success(response.data.message)
       } else { 
             toast.error(response.data.message)
       }
@@ -125,7 +121,6 @@ export function* removeLoss({ payload }:ITypeSelect) {
 
       if (response.status === 200) {
             yield put(confirmDeleteLoss(_id));
-            //   toast.success(response.data.message)
       } else {
             toast.error(response.data.message)
       }
