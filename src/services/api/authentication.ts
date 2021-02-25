@@ -1,12 +1,12 @@
-import {instance} from './api'
+import { instance } from './api'
 
 class AuthenticationService {
     async login (data:LoginConfig) {
         try{
             const result = await instance.post<Promise<object>>('/login',data)
             return result
-        }catch(err){
-            return err.response  
+        }catch(error){
+            return error.response
         }
     }
 

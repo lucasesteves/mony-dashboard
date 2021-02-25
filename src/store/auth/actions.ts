@@ -42,5 +42,4 @@ export const logoutAccount=():ITypeSelect=>({
     type:loadConfigAction.logout,
     payload: {}
 });
-
-    
+  

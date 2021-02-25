@@ -1,6 +1,5 @@
 import { loadConfigAction } from './actions';
 
-
 const INITIAL_STATE : UserState = {
     user:{
         id:'',
@@ -16,6 +15,8 @@ const INITIAL_STATE : UserState = {
   
   export default function data(state = INITIAL_STATE, action:any) {
       switch (action.type) {
+        case 'persist/REHYDRATE':
+            return INITIAL_STATE;
         case loadConfigAction.authenticate:
             return { ...state,
                 user:action.payload.user,

@@ -4,7 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 
 import rootSaga from './rootSaga';
 import rootReducer from './rootReducer';
-import persistReducer from './persistReducer';
+import { persist as persistReducer } from './persistReducer';
 
 export type AppState = ReturnType<typeof rootReducer>
 

@@ -15,6 +15,8 @@ const INITIAL_STATE : DashboardState={
   
   export default function data(state = INITIAL_STATE, action:any) {
       switch (action.type) {
+        case 'persist/REHYDRATE':
+            return INITIAL_STATE;
         case loadDashboardAction.sendingData:
             return { ...state,dash:{
                 totalWin:action.payload.totalWin,
