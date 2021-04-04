@@ -14,8 +14,8 @@ class AuthenticationService {
         try{
             const result = await instance.post<Promise<object>>('/register',data);
             return result
-        }catch(err){
-            return err.message
+        }catch(error){
+            return error.response
         }
     }
 }

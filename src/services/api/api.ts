@@ -14,13 +14,14 @@ export const setToken = (token:string) => instance.defaults.headers.Authorizatio
 instance.interceptors.response.use(
   (response) => response,
   (error) => {
+    console.log(error.response)
     if (error.response.status === 401) {
       persistor.purge()
-      window.location.reload();
+      error.response.data.deny && window.location.reload();
     }
-    else if(error.response.status === 403){
+    if(error.response.status === 403){
       persistor.purge()
-      window.location.reload();
+      error.response.data.deny && window.location.reload();
     }else{
       return Promise.reject(error);
     }
